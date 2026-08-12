@@ -2,43 +2,7 @@
 SPDX-FileCopyrightText: 2024 shadPS4 Emulator Project
 SPDX-License-Identifier: GPL-2.0-or-later
 -->
-Discord server for talking about forks. https://discord.gg/jgpqB7gUxG 
 
-“For the latest SHADPS4 and Diegolix fork updates, tips, tricks, and gameplay (including Bloodborne on PC), check out ProteinGaming on YouTube!” https://www.youtube.com/@ProteinGaming-97
-
-<img width="1280" height="755" alt="image" src="https://github.com/user-attachments/assets/ca6749a6-5649-40cf-91ef-23219dcc3331" />
-
-This repository has three branches with extra features based on the main Shad branch. They are experimental or self-added for convenience. They all share the following Bloodborne-specific enhancements:
-
-NOTE:     Shadlix IS THE ONLY ONE THAT I WILL UPDATE FROM NOW ON, ALSO IT WILL HAVE ALL THE FEATURES INTO EXPERIMENTAL TAB. 
-
--A sound hack that prevents Bloodborne from losing audio. (originally made by rainvmaker)
-
--Automatic backups via a checkbox in the Graphics tab in Settings.
-
--A PM4 Type 0 hack to avoid related issues. (Do not use this with the "Copy Buffer" checkbox under the Debug tab in Settings.)
-
--An RCAS bar in Settings to adjust FSR sharpness.
-
--Several Hotkeys
-
--Restart and Stop buttons working.
-
--Keyboard and mouse custom button mapping for FromSoftware games.
-
--An Experimental tab with all new features and both isDevKit and Neo Mode (PS4 Pro Mode) checkboxes in Settings.
-
--Safe Tiling and USB PRs that I developed for main Shad.
-
-![image](https://github.com/user-attachments/assets/65f59145-65ca-4296-bab4-e6c55ec6e5bc)
-
-PRTBB This is the safest branch at the moment. It doesn’t include any extra features.
-
-Shadlix (previously known as BBFork) -Includes a high-resolution hack (thanks to fmod) with adjonesse hack to stabilize it and modified by me to avoid crashing other games. -Note: May impact performance on mid- or low-end systems.
-
-Full-Souls -Includes the AV improvements PR to prevent Dark Souls 2’s main intro from crashing.
-
--Includes a variaty of readbacks speeds adjusted by me, modified from the lastest Readbacks optmization pr from Turtle Developer. Note: This can cause minor stutters in heavy areas when loading first time.
 
 <h1 align="center">
   <br>

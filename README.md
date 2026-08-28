@@ -5,199 +5,223 @@ SPDX-License-Identifier: GPL-2.0-or-later
 
 <h1 align="center">
   <br>
-  <b>shadPS4 – Uncharted Edition</b>
+  <b>shadPS4 — Uncharted Edition</b>
   <br>
 </h1>
 
 <p align="center">
-Custom shadPS4 build focused on improving the <b>Uncharted series</b> and <b>Uncharted: The Nathan Drake Collection</b>.
+  <b>A custom shadPS4 development build focused on the Uncharted series, visual accuracy, performance, and high-resolution gameplay.</b>
 </p>
 
-# General Information
+---
 
-This is a custom build of **shadPS4**, an experimental PlayStation 4 emulator for Windows, Linux, and macOS.
+# Overview
 
-This build is specifically being developed and tested for the **Uncharted series**.
+**shadPS4 — Uncharted Edition** is a custom development build of shadPS4 focused primarily on improving the emulation experience for the **Uncharted series**, with particular attention given to **Uncharted: The Nathan Drake Collection**.
 
-The main focus is:
+The project is built around three priorities:
+
+* **Visual accuracy**
+* **Performance**
+* **Stability**
+
+The objective is not simply to make the games boot or render correctly in isolated scenes. The goal is to create a consistently playable experience with improved graphics, reduced rendering issues, smoother frame pacing, and stronger performance across the entire Uncharted series.
+
+---
+
+# Supported Development Targets
+
+The primary games used for development and testing are:
+
+* **Uncharted: Drake's Fortune**
+* **Uncharted 2: Among Thieves**
+* **Uncharted 3: Drake's Deception**
+* **Uncharted: The Nathan Drake Collection**
+* **Uncharted 4: A Thief's End**
+* **Uncharted: The Lost Legacy**
+
+The current main focus is **The Nathan Drake Collection**, especially Uncharted 3, due to its combination of rendering issues, performance challenges, and shader-related problems.
+
+---
+
+# Project Goals
+
+The long-term objective of this build is to make the Uncharted series as close to fully playable as technically possible.
+
+Development targets include:
+
+* Improved graphical accuracy
+* Reduced shader-related artifacts
+* Correct character rendering
+* Better texture and framebuffer behavior
+* Improved lighting
+* Better anti-aliasing
+* Higher output resolutions
+* Reduced GPU synchronization overhead
+* Improved CPU and GPU utilization
+* Better frame pacing
+* Fewer crashes
+* Reduced renderer stalls
+* Up to **60 FPS where technically achievable**
+* High-quality **1440p and 4K output**
+
+Performance and visual correctness are treated equally.
+
+A visual fix that introduces a major performance regression is not considered complete.
+
+Likewise, an optimization that increases performance but causes graphical corruption is not considered acceptable.
+
+---
+
+# Uncharted: The Nathan Drake Collection
+
+**The Nathan Drake Collection** is currently the primary development target.
+
+The collection includes:
 
 * Uncharted: Drake's Fortune
 * Uncharted 2: Among Thieves
 * Uncharted 3: Drake's Deception
-* Uncharted: The Nathan Drake Collection
-* Uncharted 4: A Thief's End
-* Uncharted: The Lost Legacy
 
-The primary development target is to improve compatibility, graphics, stability, image quality, and performance for these games.
+Because all three games share several rendering and engine characteristics, changes are tested across the collection whenever possible.
 
-# Project Goal
+The objective is to avoid game-specific hacks unless absolutely necessary.
 
-The main goal of this custom shadPS4 build is to make the **Uncharted series as close to fully playable as possible**, with a target of high-resolution gameplay and up to **60 FPS where hardware and emulation performance allow it**.
+Ideally, fixes should improve the underlying emulation behavior rather than correcting only a single scene or title.
 
-The project includes experimental renderer changes and game-specific fixes intended to improve the Uncharted experience.
+---
 
-# Current Development Focus
+# Graphics Development
 
-Development currently focuses on several major areas.
+A significant portion of development is focused on renderer accuracy.
 
-## Performance
+Current areas of investigation and improvement include:
 
-Work is being done to reduce unnecessary GPU and CPU overhead, including:
-
-* Renderer optimizations
-* Vulkan performance improvements
-* Reduced unnecessary GPU transfers
-* Improved resource caching
-* Improved buffer reuse
-* Reduced synchronization stalls
-* Improved asynchronous graphics work
-* Improved asynchronous compute work
-* Faster handling of resident GPU resources
-* Reduced staging-buffer allocations
-* Improved vertex and index buffer handling
-* Improved indirect draw and dispatch handling
-
-The long-term target is smoother gameplay, higher minimum FPS, and better GPU utilization in demanding Uncharted scenes.
-
-# Graphics Improvements
-
-Several graphics improvements are being researched or implemented specifically for Uncharted.
-
-These include:
-
-* Improved image quality
-* Improved anti-aliasing
-* Higher-resolution rendering
-* Depth-of-field removal or adjustment
-* Texture fixes
-* Shader fixes
-* Lighting fixes
-* Brightness improvements
-* Character rendering fixes
-* Hair rendering fixes
-* Geometry corruption fixes
-* Improved interpolation handling
-* Improved framebuffer behavior
-* Vulkan renderer fixes
-
-# Nathan Stretching Fix
-
-One of the major graphical problems being investigated is the **Nathan stretching / geometry corruption issue**.
-
-Testing showed that using native fragment interpolation instead of manually reconstructing interpolation through NVIDIA-specific barycentric handling can improve or fix some character geometry problems.
-
-This area is still under active development because fixes must maintain both:
-
-* Correct character rendering
-* Good performance
-
-A graphical fix that causes a major FPS regression is not considered a complete solution.
-
-# Character and Hair Rendering
-
-Additional work is being performed on character rendering issues that can appear in the Uncharted games.
-
-Current areas of investigation include:
-
-* Nathan character stretching
-* Hair artifacts
-* Incorrect vertex interpolation
-* Missing fine detail
-* Broken geometry
-* Incorrect textures
-* Shader-related character artifacts
-
-The objective is to fix these problems without relying on expensive workarounds that significantly reduce performance.
-
-# Uncharted 3
-
-Uncharted 3 is one of the primary test games for this build.
-
-Known areas being worked on include:
-
-* Performance
-* Brightness
-* Visual bugs
-* Character rendering
+* Vertex interpolation
+* Fragment interpolation
+* Character geometry
 * Hair rendering
-* Geometry issues
-* Shader behavior
-* Image quality
+* Texture sampling
+* Shader translation
+* Framebuffer behavior
+* Depth handling
+* Lighting
+* Brightness
+* Post-processing
+* Image reconstruction
 * Anti-aliasing
 * High-resolution rendering
+* Vulkan-specific behavior
 
-The goal is to eventually make Uncharted 3 consistently playable with correct graphics and strong performance.
+The goal is to eliminate visible rendering errors while keeping the implementation efficient.
 
-# The Nathan Drake Collection
+---
 
-**Uncharted: The Nathan Drake Collection** is one of the primary targets of this project.
+# Nathan Stretching and Geometry Corruption
 
-The collection contains:
+One of the most important rendering issues being investigated is the well-known **Nathan stretching / geometry corruption problem**.
 
-* Uncharted: Drake's Fortune
-* Uncharted 2: Among Thieves
-* Uncharted 3: Drake's Deception
+Testing has shown that incorrect interpolation behavior can produce severe character deformation and geometry artifacts.
 
-Development is focused on improving compatibility across the entire collection rather than optimizing only a single game.
+A successful experimental path used **native fragment interpolation** instead of manually reconstructing interpolation through barycentric shader logic.
 
-Changes are tested carefully because a fix for one Uncharted title should ideally not introduce regressions into another.
+This significantly improved the rendering behavior in affected scenes.
 
-# FSR 3
+However, the implementation must also maintain acceptable performance.
 
-Experimental **FSR 3 support** is also being developed for this custom build.
+The final solution must satisfy both requirements:
 
-The intended behavior is automatic.
+**Correct geometry**
 
-When FSR is enabled:
+and
 
-### 1080p Output
+**Minimal performance impact**
 
-Use:
+The project therefore continues to investigate a more efficient and reliable interpolation solution.
 
-**FSR Native AA**
+---
 
-This keeps the internal rendering resolution high while using FSR primarily for anti-aliasing and image reconstruction.
+# Character Rendering
 
-### 1440p Output
+Character rendering is one of the main priorities of this build.
 
-Automatically select an appropriate quality mode depending on rendering requirements.
+Current work includes investigation of:
 
-### 4K Output
+* Nathan stretching
+* Vertex deformation
+* Hair artifacts
+* Broken geometry
+* Incorrect interpolation
+* Shader precision issues
+* Missing surface detail
+* Texture corruption
+* Incorrect lighting
+* Depth-related artifacts
 
-Use:
+Character models are especially useful for detecting subtle renderer problems because even small interpolation or shader errors can produce highly visible corruption.
 
-**FSR Quality**
+---
 
-The emulator should automatically determine the appropriate FSR mode based on the selected output resolution rather than requiring the user to manually change the quality preset every time.
+# Uncharted 3 Development
 
-Further work is planned for anti-aliasing quality and image stability.
+**Uncharted 3: Drake's Deception** is currently one of the most demanding test cases.
 
-# Renderer Optimization
+Development areas include:
 
-The renderer contains experimental optimizations designed to reduce unnecessary work.
+* Brightness correction
+* Character rendering
+* Hair rendering
+* Geometry stability
+* Shader accuracy
+* Vulkan performance
+* Texture correctness
+* Frame pacing
+* Resolution scaling
+* Anti-aliasing
+* GPU utilization
+* Renderer synchronization
 
-Areas being developed include:
+The long-term goal is to make Uncharted 3 consistently playable with correct graphics and strong performance across demanding scenes.
 
+---
+
+# Performance Optimization
+
+Performance work focuses primarily on reducing unnecessary synchronization, transfers, allocations, and CPU-GPU communication.
+
+Current optimization areas include:
+
+* Reduced GPU synchronization
+* Reduced staging-buffer allocations
+* Improved resource reuse
 * Resident resource caching
 * Generation-checked GPU resources
-* Reusable GPU allocations
 * Reduced guest-memory round trips
-* Improved compute-generated resource handling
-* Async graphics execution
-* Async compute execution
-* Better synchronization
-* Reduced temporary allocations
-* Reduced transfer operations
-* Faster texture handling
-* Faster sampled-image handling
+* Faster vertex-buffer handling
+* Faster index-buffer handling
+* Improved indirect draw handling
+* Improved indirect dispatch handling
+* Improved sampled-image handling
+* Improved storage-image handling
+* Asynchronous graphics execution
+* Asynchronous compute execution
+* Reduced transfer overhead
+* Reduced temporary resource creation
+* Better GPU queue utilization
 
-Special attention is being given to workloads commonly encountered in the Uncharted games.
+These optimizations are particularly important in large Uncharted scenes containing complex geometry, shaders, effects, and streaming workloads.
 
-# Compute and GPU Resource Improvements
+---
 
-Compute-generated resources can be reused directly by the renderer when it is safe to do so.
+# Resident Resource System
 
-The generation-checked resource system is being extended to cover:
+The renderer is being extended with safer and more efficient resident-resource handling.
+
+Generation-checked resources can be reused when their contents are still valid.
+
+This allows the renderer to avoid unnecessary copies and guest-memory round trips.
+
+The system is being extended to support:
 
 * Storage buffers
 * Vertex buffers
@@ -206,101 +230,264 @@ The generation-checked resource system is being extended to cover:
 * Indirect dispatch arguments
 * Sampled images
 * Storage images
-* Compute-generated guest data
+* Compute-generated data
 
-This can prevent unnecessary transfers back through guest memory before the renderer consumes the results.
+When a valid resident resource exists, the renderer can consume that resource directly instead of recreating or retransferring the same data.
+
+This can significantly reduce overhead in GPU-heavy workloads.
+
+---
+
+# Asynchronous Graphics
+
+The graphics path is being improved to reduce situations where the CPU unnecessarily waits for GPU completion.
+
+The goal is to allow safe workloads to continue asynchronously whenever resource lifetime and synchronization rules permit it.
+
+This work includes:
+
+* Command-buffer reuse
+* Fence management
+* Descriptor reuse
+* Resource lifetime tracking
+* Resident-buffer validation
+* Generation checks
+* Reduced synchronous waits
+
+Unsafe resource usage continues to fall back to synchronous execution.
+
+Correctness always takes priority over asynchronous execution.
+
+---
+
+# Asynchronous Compute
+
+The compute path is also being optimized.
+
+The compute system can reuse graphics-style command infrastructure while maintaining independent synchronization where required.
+
+Development areas include:
+
+* Compute command rings
+* Descriptor-pool reuse
+* Command-buffer reuse
+* Fence-controlled lifetime management
+* Resident compute resources
+* Reduced per-dispatch waits
+* Safe graphics/compute interaction
+* Resource transition validation
+
+The purpose is to reduce unnecessary synchronization between graphics and compute workloads.
+
+---
+
+# Reduced Guest-Memory Round Trips
+
+One important optimization is allowing GPU-produced data to remain available to other GPU workloads when it is safe to do so.
+
+Instead of:
+
+**GPU → Guest RAM → GPU**
+
+the renderer can sometimes use:
+
+**GPU → GPU**
+
+This is particularly useful for:
+
+* Compute-generated vertex data
+* Compute-generated index data
+* Indirect arguments
+* Sampled images
+* Storage images
+* Temporary GPU resources
+
+Avoiding unnecessary guest-memory round trips can reduce latency and improve overall renderer efficiency.
+
+---
+
+# FSR 3
+
+This build also includes experimental work related to **FSR 3**.
+
+The intended behavior is automatic resolution-based configuration.
+
+When FSR is enabled, the emulator should determine the most appropriate mode automatically.
+
+## 1080p
+
+Use:
+
+**FSR Native AA**
+
+This prioritizes image reconstruction and anti-aliasing while maintaining full-resolution rendering.
+
+## 1440p
+
+Automatically select an appropriate high-quality mode based on the output resolution and renderer requirements.
+
+## 4K
+
+Use:
+
+**FSR Quality**
+
+This provides a balance between image quality and rendering performance.
+
+The objective is to avoid requiring users to manually select an FSR preset every time the output resolution changes.
+
+---
+
+# Image Quality
+
+Image quality is an important part of the project.
+
+Planned and experimental improvements include:
+
+* Improved anti-aliasing
+* Better temporal stability
+* Reduced shimmering
+* Reduced aliasing
+* Higher-quality texture presentation
+* Improved shader precision
+* Better image reconstruction
+* High-resolution output
+* Reduced post-processing artifacts
+
+The objective is to achieve a cleaner image without introducing excessive GPU overhead.
+
+---
+
+# Depth of Field
+
+Depth-of-field behavior is also being investigated.
+
+Certain post-processing effects can significantly reduce clarity at high resolutions.
+
+Optional changes may allow depth of field to be reduced or disabled in selected situations.
+
+This can provide a sharper image, particularly when playing at 1440p or 4K.
+
+---
+
+# Renderer Philosophy
+
+The renderer follows a simple rule:
+
+> **Correctness first, optimization second — but both are required for a final solution.**
+
+A workaround that fixes a graphical issue while severely reducing frame rate is not considered finished.
+
+An optimization that increases frame rate while introducing visual corruption is equally unacceptable.
+
+Every major change should ideally improve one area without damaging another.
+
+---
+
+# Performance Target
+
+The long-term performance objective is:
+
+**High-resolution gameplay at up to 60 FPS where technically possible.**
+
+Target output resolutions include:
+
+* 1080p
+* 1440p
+* 4K
+
+Actual performance depends on:
+
+* CPU performance
+* GPU performance
+* Vulkan driver behavior
+* Game scene complexity
+* Shader workloads
+* Resolution
+* Emulator overhead
+* Current compatibility
+* Renderer implementation
+
+60 FPS is a development target and is not guaranteed in every scene.
+
+---
 
 # Experimental Status
 
 > [!IMPORTANT]
 > This is an experimental development build.
 
-The emulator and these modifications are still under active development.
+The project is under active development.
 
-You may encounter:
+Users may encounter:
 
 * Crashes
-* Graphical corruption
-* Missing graphics
-* Shader bugs
-* Incorrect lighting
+* Broken shaders
+* Geometry corruption
 * Character artifacts
+* Hair artifacts
+* Missing graphics
+* Incorrect lighting
+* Incorrect brightness
+* Texture problems
 * Performance regressions
-* Save-related issues
+* Frame pacing issues
 * Game-specific compatibility problems
 
-A feature being present does not necessarily mean that it is finished or stable.
+Experimental features may change or be removed when a better implementation becomes available.
 
-# Development Philosophy
+---
 
-The priority of this build is not simply to make a game boot.
+# Development Priorities
 
-The target is:
+Current development priorities include:
 
-**Correct graphics + good performance + stability.**
+1. Improve Nathan Drake Collection compatibility
+2. Fix Nathan stretching
+3. Fix character geometry corruption
+4. Fix hair rendering
+5. Improve shader accuracy
+6. Improve Uncharted 3 rendering
+7. Improve brightness and lighting
+8. Reduce GPU synchronization
+9. Improve resident-resource handling
+10. Improve asynchronous graphics
+11. Improve asynchronous compute
+12. Reduce guest-memory transfers
+13. Improve texture handling
+14. Improve anti-aliasing
+15. Improve FSR 3 integration
+16. Improve 1440p rendering
+17. Improve 4K rendering
+18. Improve frame pacing
+19. Reduce crashes
+20. Improve overall Uncharted performance
 
-A graphical workaround that fixes one visual issue but causes a large performance loss is not considered an ideal final solution.
+---
 
-Similarly, an optimization should not be retained if it introduces graphical corruption or instability.
+# Controls
 
-# Performance Target
+| Key        | Function                    |
+| ---------- | --------------------------- |
+| F10        | FPS Counter                 |
+| Ctrl + F10 | Video Debug Information     |
+| F11        | Fullscreen                  |
+| F12        | Render Capture / Screenshot |
+| Alt + F12  | Screenshot with overlays    |
 
-The long-term performance goal is:
+Compatible Xbox, DualShock, and DualSense controllers can be used with the emulator.
 
-**Up to 4K / 60 FPS for the Uncharted series where technically possible.**
+Keyboard and mouse bindings can also be configured through the controller settings.
 
-Actual performance depends heavily on:
+---
 
-* CPU
-* GPU
-* Game
-* Scene complexity
-* Resolution
-* Shader compilation
-* Emulator overhead
-* Current renderer implementation
+# Firmware Modules
 
-60 FPS is a development target rather than a guarantee.
+Some PlayStation 4 system modules are required for correct game behavior.
 
-# Recommended Hardware
-
-This experimental build benefits from modern high-end hardware.
-
-A powerful GPU is particularly useful when testing:
-
-* 4K output
-* FSR
-* High internal resolutions
-* Expensive shader workloads
-* Vulkan renderer modifications
-
-Performance will continue to improve as emulator-level bottlenecks are identified and optimized.
-
-# Keyboard Shortcuts
-
-| Key        | Function                      |
-| ---------- | ----------------------------- |
-| F10        | FPS Counter                   |
-| Ctrl + F10 | Video Debug Information       |
-| F11        | Fullscreen                    |
-| F12        | Render Capture / Screenshot   |
-| Alt + F12  | Screenshot including overlays |
-
-# Controllers
-
-Xbox and DualShock/DualSense-compatible controllers can be used with the emulator.
-
-Keyboard and mouse bindings can also be configured from the controller settings.
-
-# Firmware Files
-
-shadPS4 can use certain PlayStation 4 system modules.
-
-Supported modules must be obtained from a **legally owned PlayStation 4 console** and placed inside the emulator's:
+Supported modules should be placed inside:
 
 `sys_modules`
-
-folder.
 
 Examples include:
 
@@ -321,55 +508,55 @@ Examples include:
 | libSceXml.sprx              |                                |
 
 > [!CAUTION]
-> Firmware modules and game files must be dumped from hardware and games you legally own.
+> Required firmware modules must be dumped from a legally owned PlayStation 4 console.
 
-# Current Priorities
-
-The current development priority is approximately:
-
-1. Fix major Uncharted rendering problems
-2. Fix Nathan stretching and geometry corruption
-3. Fix hair and character artifacts
-4. Improve shader accuracy
-5. Improve renderer performance
-6. Reduce GPU synchronization stalls
-7. Improve asynchronous GPU execution
-8. Improve texture and image handling
-9. Improve Uncharted 3 brightness and visual issues
-10. Improve anti-aliasing
-11. Improve FSR 3 integration
-12. Improve 1440p and 4K rendering
-13. Improve frame pacing
-14. Reduce crashes
-15. Reach stable 60 FPS where possible
+---
 
 # Release Status
 
-This build is currently a **work in progress**.
+**shadPS4 — Uncharted Edition** remains a work in progress.
 
-It is being actively tested and improved with the Uncharted series as the primary workload.
+Development is currently focused on achieving a stable combination of:
 
-A public release should only be considered once the build reaches an acceptable level of:
+* Accurate rendering
+* Strong performance
+* High-resolution output
+* Stable frame pacing
+* Reduced crashes
+* Reliable Uncharted compatibility
 
-* Stability
-* Visual accuracy
-* Performance
-* Compatibility
+The project will continue to evolve as renderer improvements, shader fixes, and performance optimizations are implemented.
+
+---
+
+# Project Vision
+
+The final objective is simple:
+
+> **Play the Uncharted series with accurate graphics, high image quality, smooth performance, and minimal emulation-related issues.**
+
+The project is specifically designed around improving the experience rather than simply increasing compatibility statistics.
+
+Every renderer change, shader fix, optimization, and experimental feature is evaluated based on how much it improves the actual gameplay experience.
+
+---
 
 # Disclaimer
 
-This project is an unofficial custom development build based on shadPS4.
+This is an unofficial custom development build based on the open-source shadPS4 emulator project.
 
-PlayStation, PS4, Uncharted, The Nathan Drake Collection, and related trademarks belong to their respective owners.
+PlayStation, PlayStation 4, Uncharted, The Nathan Drake Collection, and all related trademarks and copyrighted properties belong to their respective owners.
 
-No copyrighted game files or PlayStation firmware files are distributed with this project.
+No copyrighted games, firmware, keys, or proprietary PlayStation files are distributed with this project.
 
-Users must provide files dumped from hardware and games they legally own.
+Users are responsible for providing legally obtained files from hardware and games they own.
+
+---
 
 # License
 
 This project remains licensed under:
 
-**GPL-2.0-or-later**
+**GNU General Public License v2.0 or later — GPL-2.0-or-later**
 
-Any modifications based on GPL-licensed shadPS4 source code must continue to comply with the applicable GPL license requirements.
+Modifications based on shadPS4 remain subject to the applicable GPL licensing requirements.

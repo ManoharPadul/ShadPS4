@@ -3,194 +3,373 @@ SPDX-FileCopyrightText: 2024 shadPS4 Emulator Project
 SPDX-License-Identifier: GPL-2.0-or-later
 -->
 
-
 <h1 align="center">
   <br>
-  <a href="https://shadps4.net/"><img src="https://github.com/shadps4-emu/shadPS4/blob/main/.github/shadps4.png" width="220"></a>
-  <br>
-  <b>shadPS4</b>
+  <b>shadPS4 – Uncharted Edition</b>
   <br>
 </h1>
 
-<h1 align="center">
- <a href="https://discord.gg/bFJxfftGW6">
-        <img src="https://img.shields.io/discord/1080089157554155590?color=5865F2&label=shadPS4%20Discord&logo=Discord&logoColor=white" width="275">
- <a href="https://github.com/shadps4-emu/shadPS4/releases/latest">
-        <img src="https://img.shields.io/github/downloads/shadps4-emu/shadPS4/total.svg" width="140">
- <a href="https://shadps4.net/">
-        <img src="https://img.shields.io/badge/shadPS4-website-8A2BE2" width="150">
- <a href="https://x.com/shadps4">
-        <img src="https://img.shields.io/badge/-Join%20us-black?logo=X&logoColor=white" width="100">
- <a href="https://github.com/shadps4-emu/shadPS4/stargazers">
-        <img src="https://img.shields.io/github/stars/shadps4-emu/shadPS4" width="120">
-</h1>
+<p align="center">
+Custom shadPS4 build focused on improving the <b>Uncharted series</b> and <b>Uncharted: The Nathan Drake Collection</b>.
+</p>
 
+# General Information
 
-# General information
+This is a custom build of **shadPS4**, an experimental PlayStation 4 emulator for Windows, Linux, and macOS.
 
-**shadPS4** is an early **PlayStation 4** emulator for **Windows**, **Linux** and **macOS** written in C++.
+This build is specifically being developed and tested for the **Uncharted series**.
 
-If you encounter problems or have doubts, do not hesitate to look at the [**Quickstart**](https://github.com/shadps4-emu/shadPS4/wiki/I.-Quick-start-%5BUsers%5D).\
-To verify that a game works, you can look at [**shadPS4 Game Compatibility**](https://github.com/shadps4-compatibility/shadps4-game-compatibility).\
-To discuss shadPS4 development, suggest ideas or to ask for help, join our [**Discord server**](https://discord.gg/bFJxfftGW6).\
-To get the latest news, go to our [**X (Twitter)**](https://x.com/shadps4) or our [**website**](https://shadps4.net/).\
-You can donate to the project via our [**Kofi page**](https://ko-fi.com/shadps4).
+The main focus is:
 
-# Status
+* Uncharted: Drake's Fortune
+* Uncharted 2: Among Thieves
+* Uncharted 3: Drake's Deception
+* Uncharted: The Nathan Drake Collection
+* Uncharted 4: A Thief's End
+* Uncharted: The Lost Legacy
+
+The primary development target is to improve compatibility, graphics, stability, image quality, and performance for these games.
+
+# Project Goal
+
+The main goal of this custom shadPS4 build is to make the **Uncharted series as close to fully playable as possible**, with a target of high-resolution gameplay and up to **60 FPS where hardware and emulation performance allow it**.
+
+The project includes experimental renderer changes and game-specific fixes intended to improve the Uncharted experience.
+
+# Current Development Focus
+
+Development currently focuses on several major areas.
+
+## Performance
+
+Work is being done to reduce unnecessary GPU and CPU overhead, including:
+
+* Renderer optimizations
+* Vulkan performance improvements
+* Reduced unnecessary GPU transfers
+* Improved resource caching
+* Improved buffer reuse
+* Reduced synchronization stalls
+* Improved asynchronous graphics work
+* Improved asynchronous compute work
+* Faster handling of resident GPU resources
+* Reduced staging-buffer allocations
+* Improved vertex and index buffer handling
+* Improved indirect draw and dispatch handling
+
+The long-term target is smoother gameplay, higher minimum FPS, and better GPU utilization in demanding Uncharted scenes.
+
+# Graphics Improvements
+
+Several graphics improvements are being researched or implemented specifically for Uncharted.
+
+These include:
+
+* Improved image quality
+* Improved anti-aliasing
+* Higher-resolution rendering
+* Depth-of-field removal or adjustment
+* Texture fixes
+* Shader fixes
+* Lighting fixes
+* Brightness improvements
+* Character rendering fixes
+* Hair rendering fixes
+* Geometry corruption fixes
+* Improved interpolation handling
+* Improved framebuffer behavior
+* Vulkan renderer fixes
+
+# Nathan Stretching Fix
+
+One of the major graphical problems being investigated is the **Nathan stretching / geometry corruption issue**.
+
+Testing showed that using native fragment interpolation instead of manually reconstructing interpolation through NVIDIA-specific barycentric handling can improve or fix some character geometry problems.
+
+This area is still under active development because fixes must maintain both:
+
+* Correct character rendering
+* Good performance
+
+A graphical fix that causes a major FPS regression is not considered a complete solution.
+
+# Character and Hair Rendering
+
+Additional work is being performed on character rendering issues that can appear in the Uncharted games.
+
+Current areas of investigation include:
+
+* Nathan character stretching
+* Hair artifacts
+* Incorrect vertex interpolation
+* Missing fine detail
+* Broken geometry
+* Incorrect textures
+* Shader-related character artifacts
+
+The objective is to fix these problems without relying on expensive workarounds that significantly reduce performance.
+
+# Uncharted 3
+
+Uncharted 3 is one of the primary test games for this build.
+
+Known areas being worked on include:
+
+* Performance
+* Brightness
+* Visual bugs
+* Character rendering
+* Hair rendering
+* Geometry issues
+* Shader behavior
+* Image quality
+* Anti-aliasing
+* High-resolution rendering
+
+The goal is to eventually make Uncharted 3 consistently playable with correct graphics and strong performance.
+
+# The Nathan Drake Collection
+
+**Uncharted: The Nathan Drake Collection** is one of the primary targets of this project.
+
+The collection contains:
+
+* Uncharted: Drake's Fortune
+* Uncharted 2: Among Thieves
+* Uncharted 3: Drake's Deception
+
+Development is focused on improving compatibility across the entire collection rather than optimizing only a single game.
+
+Changes are tested carefully because a fix for one Uncharted title should ideally not introduce regressions into another.
+
+# FSR 3
+
+Experimental **FSR 3 support** is also being developed for this custom build.
+
+The intended behavior is automatic.
+
+When FSR is enabled:
+
+### 1080p Output
+
+Use:
+
+**FSR Native AA**
+
+This keeps the internal rendering resolution high while using FSR primarily for anti-aliasing and image reconstruction.
+
+### 1440p Output
+
+Automatically select an appropriate quality mode depending on rendering requirements.
+
+### 4K Output
+
+Use:
+
+**FSR Quality**
+
+The emulator should automatically determine the appropriate FSR mode based on the selected output resolution rather than requiring the user to manually change the quality preset every time.
+
+Further work is planned for anti-aliasing quality and image stability.
+
+# Renderer Optimization
+
+The renderer contains experimental optimizations designed to reduce unnecessary work.
+
+Areas being developed include:
+
+* Resident resource caching
+* Generation-checked GPU resources
+* Reusable GPU allocations
+* Reduced guest-memory round trips
+* Improved compute-generated resource handling
+* Async graphics execution
+* Async compute execution
+* Better synchronization
+* Reduced temporary allocations
+* Reduced transfer operations
+* Faster texture handling
+* Faster sampled-image handling
+
+Special attention is being given to workloads commonly encountered in the Uncharted games.
+
+# Compute and GPU Resource Improvements
+
+Compute-generated resources can be reused directly by the renderer when it is safe to do so.
+
+The generation-checked resource system is being extended to cover:
+
+* Storage buffers
+* Vertex buffers
+* Index buffers
+* Indirect draw arguments
+* Indirect dispatch arguments
+* Sampled images
+* Storage images
+* Compute-generated guest data
+
+This can prevent unnecessary transfers back through guest memory before the renderer consumes the results.
+
+# Experimental Status
 
 > [!IMPORTANT]
-> shadPS4 is early in development, don't expect a flawless experience.
+> This is an experimental development build.
 
-Currently, the emulator can successfully run games like [**Bloodborne**](https://www.youtube.com/watch?v=5sZgWyVflFM), [**Dark Souls Remastered**](https://www.youtube.com/watch?v=-3PA-Xwszts), [**Red Dead Redemption**](https://www.youtube.com/watch?v=Al7yz_5nLag), and many other games.
+The emulator and these modifications are still under active development.
 
-# Why
+You may encounter:
 
-This project began for fun. Given our limited free time, it may take some time before shadPS4 can run more complex games, but we're committed to making small, regular updates.
+* Crashes
+* Graphical corruption
+* Missing graphics
+* Shader bugs
+* Incorrect lighting
+* Character artifacts
+* Performance regressions
+* Save-related issues
+* Game-specific compatibility problems
 
-# Building
+A feature being present does not necessarily mean that it is finished or stable.
 
-## Docker
+# Development Philosophy
 
-For building shadPS4 in a containerized environment using Docker and VSCode, check the instructions here:  
-[**Docker Build Instructions**](https://github.com/shadps4-emu/shadPS4/blob/main/documents/building-docker.md)
+The priority of this build is not simply to make a game boot.
 
-> [!IMPORTANT]
-> If you want to use shadPS4 to play your games, you don't have to follow the build instructions, you can simply download the emulator from either the [**release tab**](https://github.com/shadps4-emu/shadPS4/releases) or the [**action tab**](https://github.com/shadps4-emu/shadPS4/actions).
+The target is:
 
-## Windows
+**Correct graphics + good performance + stability.**
 
-Check the build instructions for [**Windows**](https://github.com/shadps4-emu/shadPS4/blob/main/documents/building-windows.md).
+A graphical workaround that fixes one visual issue but causes a large performance loss is not considered an ideal final solution.
 
-## Linux
+Similarly, an optimization should not be retained if it introduces graphical corruption or instability.
 
-Check the build instructions for [**Linux**](https://github.com/shadps4-emu/shadPS4/blob/main/documents/building-linux.md).
+# Performance Target
 
-## macOS
+The long-term performance goal is:
 
-Check the build instructions for [**macOS**](https://github.com/shadps4-emu/shadPS4/blob/main/documents/building-macos.md).
+**Up to 4K / 60 FPS for the Uncharted series where technically possible.**
 
-> [!IMPORTANT]
-> macOS users need at least macOS 15.4 to run shadPS4. Due to GPU issues there are currently heavy bugs on Intel Macs.
+Actual performance depends heavily on:
 
-# Debugging and reporting issues
+* CPU
+* GPU
+* Game
+* Scene complexity
+* Resolution
+* Shader compilation
+* Emulator overhead
+* Current renderer implementation
 
-For more information on how to test, debug and report issues with the emulator or games, read the [**Debugging documentation**](https://github.com/shadps4-emu/shadPS4/blob/main/documents/Debugging/Debugging.md).
+60 FPS is a development target rather than a guarantee.
 
-# Keyboard and Mouse Mappings
+# Recommended Hardware
 
-> [!NOTE]
-> Some keyboards may also require you to hold the Fn key to use the F\* keys. Mac users should use the Command key instead of Control, and need to use Command+F11 for full screen to avoid conflicting with system key bindings.
+This experimental build benefits from modern high-end hardware.
 
-| Button | Function |
-|-------------|-------------|
-F10 | FPS Counter
-Ctrl+F10 | Video Debug Info
-F11 | Fullscreen
-F12 | Trigger RenderDoc Capture (or game-only screenshot if RenderDoc is unavailable)
-Alt+F12 | Capture screenshot including HUD/dialog overlays
+A powerful GPU is particularly useful when testing:
 
-> [!NOTE]
-> Xbox and DualShock controllers work out of the box.
+* 4K output
+* FSR
+* High internal resolutions
+* Expensive shader workloads
+* Vulkan renderer modifications
 
-| Controller button | Keyboard equivalent |
-|-------------|-------------|
-LEFT AXIS UP | W |
-LEFT AXIS DOWN | S |
-LEFT AXIS LEFT | A |
-LEFT AXIS RIGHT | D |
-RIGHT AXIS UP | I |
-RIGHT AXIS DOWN | K |
-RIGHT AXIS LEFT | J |
-RIGHT AXIS RIGHT | L |
-TRIANGLE | Numpad 8 or C |
-CIRCLE | Numpad 6 or B |
-CROSS | Numpad 2 or N |
-SQUARE | Numpad 4 or V |
-PAD UP | UP |
-PAD DOWN | DOWN |
-PAD LEFT | LEFT |
-PAD RIGHT | RIGHT |
-OPTIONS | RETURN |
-BACK BUTTON / TOUCH PAD | SPACE |
-L1 | Q |
-R1 | U |
-L2 | E |
-R2 | O |
-L3 | X |
-R3 | M |
+Performance will continue to improve as emulator-level bottlenecks are identified and optimized.
 
-Keyboard and mouse inputs can be customized in the settings menu by clicking the Controller button, and further details and help on controls are  also found there. Custom bindings are saved per-game. Inputs support up to three keys per binding, mouse buttons, mouse movement mapped to joystick input, and more.
+# Keyboard Shortcuts
 
+| Key        | Function                      |
+| ---------- | ----------------------------- |
+| F10        | FPS Counter                   |
+| Ctrl + F10 | Video Debug Information       |
+| F11        | Fullscreen                    |
+| F12        | Render Capture / Screenshot   |
+| Alt + F12  | Screenshot including overlays |
 
-# Firmware files
+# Controllers
 
-shadPS4 can load some PlayStation 4 firmware files.
-The following firmware modules are supported and must be placed in shadPS4's `sys_modules` folder.
+Xbox and DualShock/DualSense-compatible controllers can be used with the emulator.
 
-<div align="center">
+Keyboard and mouse bindings can also be configured from the controller settings.
 
-| Modules                        | Modules                        | Modules                        | Modules                        |
-|--------------------------------|--------------------------------|--------------------------------|--------------------------------|
-| libSceAudiodec.sprx            | libSceAudiodecCpu.sprx         | libSceAudiodecCpuDdp.sprx      | libSceAudiodecCpuDtsHdLbr.sprx |
-| libSceAudiodecCpuHevag.sprx    | libSceAudiodecCpuM4aac.sprx    | libSceCesCs.sprx               | libSceFont.sprx                |
-| libSceFontFt.sprx              | libSceFreeTypeOl.sprx          | libSceFreeTypeOptOl.sprx       | libSceFreeTypeOt.sprx          |
-| libSceJpegDec.sprx             | libSceJpegEnc.sprx             | libSceJson.sprx                | libSceJson2.sprx               |
-| libSceLibcInternal.sprx        | libSceNgs2.sprx                | libScePngEnc.sprx              | libSceRtc.sprx                 |
-| libSceRudp.sprx                | libSceSystemGesture.sprx       | libSceUlt.sprx                 | libSceWkFontConfig.sprx        |
-| libSceXml.sprx                 |
-</div>
+# Firmware Files
 
-> [!Caution]
-> The above modules are required to run the games properly and must be dumped from your legally owned PlayStation 4 console.
+shadPS4 can use certain PlayStation 4 system modules.
 
+Supported modules must be obtained from a **legally owned PlayStation 4 console** and placed inside the emulator's:
 
+`sys_modules`
 
-# Main team
+folder.
 
-- [**georgemoralis**](https://github.com/georgemoralis)
-- [**psucien**](https://github.com/psucien)
-- [**viniciuslrangel**](https://github.com/viniciuslrangel)
-- [**roamic**](https://github.com/roamic)
-- [**squidbus**](https://github.com/squidbus)
-- [**frodo**](https://github.com/baggins183)
-- [**Stephen Miller**](https://github.com/StevenMiller123)
-- [**kalaposfos13**](https://github.com/kalaposfos13)
+Examples include:
 
-Logo is done by [**Xphalnos**](https://github.com/Xphalnos)
+| Module                      | Module                         |
+| --------------------------- | ------------------------------ |
+| libSceAudiodec.sprx         | libSceAudiodecCpu.sprx         |
+| libSceAudiodecCpuDdp.sprx   | libSceAudiodecCpuDtsHdLbr.sprx |
+| libSceAudiodecCpuHevag.sprx | libSceAudiodecCpuM4aac.sprx    |
+| libSceCesCs.sprx            | libSceFont.sprx                |
+| libSceFontFt.sprx           | libSceFreeTypeOl.sprx          |
+| libSceFreeTypeOptOl.sprx    | libSceFreeTypeOt.sprx          |
+| libSceJpegDec.sprx          | libSceJpegEnc.sprx             |
+| libSceJson.sprx             | libSceJson2.sprx               |
+| libSceLibcInternal.sprx     | libSceNgs2.sprx                |
+| libScePngEnc.sprx           | libSceRtc.sprx                 |
+| libSceRudp.sprx             | libSceSystemGesture.sprx       |
+| libSceUlt.sprx              | libSceWkFontConfig.sprx        |
+| libSceXml.sprx              |                                |
 
-<a href="https://github.com/shadps4-emu/shadPS4/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=shadps4-emu/shadPS4&max=24">
-</a>
+> [!CAUTION]
+> Firmware modules and game files must be dumped from hardware and games you legally own.
 
-# Contributing
+# Current Priorities
 
-If you want to contribute, please read the [**CONTRIBUTING.md**](https://github.com/shadps4-emu/shadPS4/blob/main/CONTRIBUTING.md) file.\
-Open a PR and we'll check it :)
+The current development priority is approximately:
 
-# Translations
+1. Fix major Uncharted rendering problems
+2. Fix Nathan stretching and geometry corruption
+3. Fix hair and character artifacts
+4. Improve shader accuracy
+5. Improve renderer performance
+6. Reduce GPU synchronization stalls
+7. Improve asynchronous GPU execution
+8. Improve texture and image handling
+9. Improve Uncharted 3 brightness and visual issues
+10. Improve anti-aliasing
+11. Improve FSR 3 integration
+12. Improve 1440p and 4K rendering
+13. Improve frame pacing
+14. Reduce crashes
+15. Reach stable 60 FPS where possible
 
-If you want to translate shadPS4 to your language we use [**Crowdin**](https://crowdin.com/project/shadps4-emulator).
-# Contributors
+# Release Status
 
-<a href="https://github.com/shadps4-emu/shadPS4/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=shadps4-emu/shadPS4&max=24">
-</a>
+This build is currently a **work in progress**.
 
+It is being actively tested and improved with the Uncharted series as the primary workload.
 
-# Special Thanks
+A public release should only be considered once the build reaches an acceptable level of:
 
-A few noteworthy teams/projects who've helped us along the way are:
+* Stability
+* Visual accuracy
+* Performance
+* Compatibility
 
-- [**Panda3DS**](https://github.com/wheremyfoodat/Panda3DS): A multiplatform 3DS emulator from our co-author wheremyfoodat. They have been incredibly helpful in understanding and solving problems that came up from natively executing the x64 code of PS4 binaries
+# Disclaimer
 
-- [**fpPS4**](https://github.com/red-prig/fpPS4): The fpPS4 team has assisted massively with understanding some of the more complex parts of the PS4 operating system and libraries, by helping with reverse engineering work and research.
+This project is an unofficial custom development build based on shadPS4.
 
-- **yuzu**: Our shader compiler has been designed with yuzu's Hades compiler as a blueprint. This allowed us to focus on the challenges of emulating a modern AMD GPU while having a high-quality optimizing shader compiler implementation as a base.
+PlayStation, PS4, Uncharted, The Nathan Drake Collection, and related trademarks belong to their respective owners.
 
-- [**felix86**](https://github.com/OFFTKP/felix86): A new x86-64 → RISC-V Linux userspace emulator
+No copyrighted game files or PlayStation firmware files are distributed with this project.
 
-- [**emudev.org**](https://emudev.org/): A network of people interested in the documentation, emulation, simulation and re-implementation of hardware near extinction . Belongs to my friend skmp and me (shadow) also a member of it
+Users must provide files dumped from hardware and games they legally own.
 
 # License
 
-- [**GPL-2.0 license**](https://github.com/shadps4-emu/shadPS4/blob/main/LICENSE)
+This project remains licensed under:
+
+**GPL-2.0-or-later**
+
+Any modifications based on GPL-licensed shadPS4 source code must continue to comply with the applicable GPL license requirements.

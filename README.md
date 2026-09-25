@@ -28,7 +28,6 @@ NOTE:     Shadlix IS THE ONLY ONE THAT I WILL UPDATE FROM NOW ON, ALSO IT WILL H
 
 -Safe Tiling and USB PRs that I developed for main Shad.
 
-![image](https://github.com/user-attachments/assets/65f59145-65ca-4296-bab4-e6c55ec6e5bc)
 
 PRTBB This is the safest branch at the moment. It doesn’t include any extra features.
 
@@ -37,35 +36,6 @@ Shadlix (previously known as BBFork) -Includes a high-resolution hack (thanks to
 Full-Souls -Includes the AV improvements PR to prevent Dark Souls 2’s main intro from crashing.
 
 -Includes a variaty of readbacks speeds adjusted by me, modified from the lastest Readbacks optmization pr from Turtle Developer. Note: This can cause minor stutters in heavy areas when loading first time.
-
-<h1 align="center">
-  <br>
-  <a href="https://shadps4.net/"><img src="https://github.com/shadps4-emu/shadPS4/blob/main/.github/shadps4.png" width="220"></a>
-  <br>
-  <b>shadPS4</b>
-  <br>
-</h1>
-
-<h1 align="center">
- <a href="https://discord.gg/bFJxfftGW6">
-        <img src="https://img.shields.io/discord/1080089157554155590?color=5865F2&label=shadPS4%20Discord&logo=Discord&logoColor=white" width="275">
- <a href="https://github.com/shadps4-emu/shadPS4/releases/latest">
-        <img src="https://img.shields.io/github/downloads/shadps4-emu/shadPS4/total.svg" width="140">
- <a href="https://shadps4.net/">
-        <img src="https://img.shields.io/badge/shadPS4-website-8A2BE2" width="150">
- <a href="https://x.com/shadps4">
-        <img src="https://img.shields.io/badge/-Join%20us-black?logo=X&logoColor=white" width="100">
- <a href="https://github.com/shadps4-emu/shadPS4/stargazers">
-        <img src="https://img.shields.io/github/stars/shadps4-emu/shadPS4" width="120">
-</h1>
-
-|               Bloodborne by From Software                   |                     Hatsune Miku Project DIVA Future Tone by SEGA                         |
-| :-----------------------------------------------------------: | :--------------------------------------------------------------------------------------------: |
-| ![Bloodborne screenshot](./documents/Screenshots/1.png) | ![Project DIVA screenshot](./documents/Screenshots/2.png) |
-
-|                  Yakuza 0 by SEGA                     |                 DRIVECLUB™ by Evolution Studios                    |
-| :------------------------------------------------------------------------: | :------------------------------------------------------------------: |
-| ![Yakuza screenshot](./documents/Screenshots/3.png) | ![DRIVECLUB screenshot](./documents/Screenshots/4.png) |
 
 # General information
 

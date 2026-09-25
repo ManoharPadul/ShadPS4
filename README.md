@@ -37,14 +37,11 @@ These settings may help with:
 
 ## Uncharted  Settings
 
-
 Recommended settings screenshot:
 
-![Uncharted 1 Settings](./settings 1.png)
-
-![Uncharted 2 Settings](./settings 2.png)
-
-![Uncharted 3 Settings](./settings 3.png)
+![image](https://github.com/ManoharPadul/ShadPS4/blob/main/settings%201.png)
+![image](https://github.com/ManoharPadul/ShadPS4/blob/main/settings%202.png)
+![image](https://github.com/ManoharPadul/ShadPS4/blob/main/settings%203.png)
 
 ---
 

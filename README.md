@@ -4,9 +4,7 @@ SPDX-License-Identifier: GPL-2.0-or-later
 -->
 Discord server for talking about forks. https://discord.gg/wJYmkje8Q
 
-“For the latest SHADPS4 and Mindro fork updates, tips, tricks, and gameplay (including Bloodborne on PC), check out ProteinGaming on YouTube!” https://www.youtube.com/@ProteinGaming-97
-
-<img width="1280" height="755" alt="image" src="https://github.com/user-attachments/assets/ca6749a6-5649-40cf-91ef-23219dcc3331" />
+“For the latest SHADPS4 and Mindro fork updates, tips, tricks, and gameplay (including Uncharted on PC), check out Mindro on YouTube!” https://www.youtube.com/@MindroXD
 
 This repository has three branches with extra features based on the main Shad branch. They are experimental or self-added for convenience. They all share the following Bloodborne-specific enhancements:
 

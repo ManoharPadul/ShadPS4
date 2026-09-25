@@ -17,7 +17,57 @@ This is a custom **shadPS4 experimental build focused specifically on the Unchar
 This build is intended mainly for testing, improving performance, fixing graphical issues, reducing crashes, and experimenting with renderer/CPU/GPU optimizations for the Nathan Drake Collection.
 
 ---
+# Game Settings
 
+Below are the recommended settings used for testing **Uncharted: Drake's Fortune Remastered**, **Uncharted 2: Among Thieves Remastered**, and **Uncharted 3: Drake's Deception Remastered** in this build.
+
+These settings may help with:
+
+- Better stability
+- Fewer crashes
+- Improved performance
+- Better frame pacing
+- Reduced graphical problems
+
+> [!NOTE]
+> These settings are experimental and may not work the same on every PC.
+> Performance and stability can vary depending on your **CPU**, **GPU**, **RAM**, **VRAM**, drivers, and resolution.
+
+---
+
+## Uncharted  Settings
+
+
+Recommended settings screenshot:
+
+![Uncharted 1 Settings](./settings 1.png)
+
+![Uncharted 2 Settings](./settings 2.png)
+
+![Uncharted 3 Settings](./settings 3.png)
+
+---
+
+## Notes About Settings
+
+- These settings are the ones used for this custom build during testing.
+- If you have lower-end hardware, you may need to reduce settings further.
+- If you have a stronger GPU, you may be able to increase resolution, but VRAM usage will also increase.
+- Some settings may improve one game while causing issues in another.
+- If a game crashes or freezes, try testing again with safer or lower settings.
+
+---
+
+## Nathan Drake Collection
+
+Since all three games are part of **Uncharted: The Nathan Drake Collection**, the above settings are intended specifically for this collection build.
+
+Games covered:
+
+- **Uncharted: Drake's Fortune Remastered**
+- **Uncharted 2: Among Thieves Remastered**
+- **Uncharted 3: Drake's Deception Remastered**
+  
 ## Community
 
 ### Discord

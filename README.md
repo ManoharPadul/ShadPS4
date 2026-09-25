@@ -2,157 +2,351 @@
 SPDX-FileCopyrightText: 2024 shadPS4 Emulator Project
 SPDX-License-Identifier: GPL-2.0-or-later
 -->
-Discord server for talking about forks. https://discord.gg/wJYmkje8Q
 
-“For the latest SHADPS4 and Mindro fork updates, tips, tricks, and gameplay (including Uncharted on PC), check out Mindro on YouTube!” https://www.youtube.com/@MindroXD
+# Mindro shadPS4 – Uncharted Build
 
-This repository has three branches with extra features based on the main Shad branch. They are experimental or self-added for convenience. They all share the following Bloodborne-specific enhancements:
+This is a custom **shadPS4 experimental build focused specifically on the Uncharted games included in Uncharted: The Nathan Drake Collection**.
 
-NOTE:     Shadlix IS THE ONLY ONE THAT I WILL UPDATE FROM NOW ON, ALSO IT WILL HAVE ALL THE FEATURES INTO EXPERIMENTAL TAB. 
+### Supported / Target Games
 
--A sound hack that prevents Bloodborne from losing audio. (originally made by rainvmaker)
+- **Uncharted: Drake's Fortune Remastered**
+- **Uncharted 2: Among Thieves Remastered**
+- **Uncharted 3: Drake's Deception Remastered**
+- **Uncharted: The Nathan Drake Collection**
 
--Automatic backups via a checkbox in the Graphics tab in Settings.
+This build is intended mainly for testing, improving performance, fixing graphical issues, reducing crashes, and experimenting with renderer/CPU/GPU optimizations for the Nathan Drake Collection.
 
--A PM4 Type 0 hack to avoid related issues. (Do not use this with the "Copy Buffer" checkbox under the Debug tab in Settings.)
+---
 
--An RCAS bar in Settings to adjust FSR sharpness.
+## Community
 
--Several Hotkeys
+### Discord
 
--Restart and Stop buttons working.
+Join the Discord server for discussion about the Mindro fork, testing, bugs, builds and development:
 
--Keyboard and mouse custom button mapping for FromSoftware games.
+https://discord.gg/wJYmkje8Q
 
--An Experimental tab with all new features and both isDevKit and Neo Mode (PS4 Pro Mode) checkboxes in Settings.
+### YouTube
 
--Safe Tiling and USB PRs that I developed for main Shad.
+For the latest **shadPS4 Mindro fork updates, Uncharted testing, performance comparisons, fixes, settings, tips and gameplay on PC**, check out:
 
+https://www.youtube.com/@MindroXD
 
-PRTBB This is the safest branch at the moment. It doesn’t include any extra features.
+---
 
-Shadlix (previously known as BBFork) -Includes a high-resolution hack (thanks to fmod) with adjonesse hack to stabilize it and modified by me to avoid crashing other games. -Note: May impact performance on mid- or low-end systems.
-
-Full-Souls -Includes the AV improvements PR to prevent Dark Souls 2’s main intro from crashing.
-
--Includes a variaty of readbacks speeds adjusted by me, modified from the lastest Readbacks optmization pr from Turtle Developer. Note: This can cause minor stutters in heavy areas when loading first time.
-
-# General information
-
-**shadPS4** is an early **PlayStation 4** emulator for **Windows**, **Linux** and **macOS** written in C++.
-
-If you encounter problems or have doubts, do not hesitate to look at the [**Quickstart**](https://github.com/shadps4-emu/shadPS4/wiki/I.-Quick-start-%5BUsers%5D).\
-To verify that a game works, you can look at [**shadPS4 Game Compatibility**](https://github.com/shadps4-compatibility/shadps4-game-compatibility).\
-To discuss shadPS4 development, suggest ideas or to ask for help, join our [**Discord server**](https://discord.gg/bFJxfftGW6).\
-To get the latest news, go to our [**X (Twitter)**](https://x.com/shadps4) or our [**website**](https://shadps4.net/).\
-You can donate to the project via our [**Kofi page**](https://ko-fi.com/shadps4).
-
-# Status
+# Important
 
 > [!IMPORTANT]
-> shadPS4 is early in development, don't expect a flawless experience.
+> This is an experimental custom build based on shadPS4.
+>
+> It is focused specifically on **Uncharted 1, Uncharted 2 and Uncharted 3 from The Nathan Drake Collection**.
+>
+> Do not expect every chapter or scene to work perfectly.
 
-Currently, the emulator can successfully run games like [**Bloodborne**](https://www.youtube.com/watch?v=5sZgWyVflFM), [**Dark Souls Remastered**](https://www.youtube.com/watch?v=-3PA-Xwszts), [**Red Dead Redemption**](https://www.youtube.com/watch?v=Al7yz_5nLag), and many other games.
+The emulator and these modifications are still experimental.
 
-# Why
+You may encounter:
 
-This project began for fun. Given our limited free time, it may take some time before shadPS4 can run more complex games, but we're committed to making small, regular updates.
+- Crashes
+- Freezes
+- High RAM usage
+- High VRAM usage
+- Shader compilation stutters
+- Graphical artifacts
+- Missing effects
+- Incorrect textures
+- Broken lighting
+- Frame pacing problems
+- CPU bottlenecks
+- GPU synchronization problems
+- Readback stalls
+- Performance drops in demanding chapters
+
+Different hardware may produce very different results.
+
+---
+
+# Current Development Focus
+
+The main goal of this branch is improving **Uncharted: The Nathan Drake Collection**.
+
+Current areas of experimentation include:
+
+- CPU → GPU performance
+- GPU synchronization
+- Vulkan renderer performance
+- RAM and VRAM usage
+- Texture handling
+- Buffer management
+- Readback optimization
+- Frame pacing
+- Shader performance
+- Graphical fixes
+- Renderer synchronization
+- GPU resource lifetime management
+- Memory-pressure protection
+- Crash reduction
+- Stutter reduction
+- Uncharted-specific workarounds
+
+---
+
+# Uncharted 1
+
+## Uncharted: Drake's Fortune Remastered
+
+Testing focuses on:
+
+- Performance improvements
+- Frame pacing
+- Renderer stability
+- Texture correctness
+- Memory usage
+- Crash reduction
+- GPU synchronization
+- Graphical bugs
+
+Some areas can still behave differently depending on GPU, driver and available VRAM.
+
+---
+
+# Uncharted 2
+
+## Uncharted 2: Among Thieves Remastered
+
+Testing focuses on:
+
+- CPU/GPU performance
+- GPU stalls
+- Renderer synchronization
+- Texture problems
+- Memory pressure
+- VRAM usage
+- Frame pacing
+- Crash reduction
+- Graphical improvements
+
+Large or demanding chapters can still cause significant CPU, RAM, GPU and VRAM pressure.
+
+---
+
+# Uncharted 3
+
+## Uncharted 3: Drake's Deception Remastered
+
+Uncharted 3 is one of the main development targets of this build.
+
+Testing includes:
+
+- CPU → GPU optimization
+- GPU readbacks
+- Renderer synchronization
+- Frame pacing
+- RAM usage
+- VRAM usage
+- Texture handling
+- Shader behavior
+- Graphical fixes
+- Crash fixes
+- Performance improvements
+
+Some experimental optimizations may improve performance in one scene while causing regressions somewhere else.
+
+For that reason, changes require testing across multiple chapters before they can be considered stable.
+
+---
+
+# VRAM / Memory Requirements
+
+The Nathan Drake Collection can currently place significant pressure on system RAM and GPU VRAM when running through shadPS4.
+
+For this experimental build, a GPU with **8 GB VRAM or more is strongly recommended**.
+
+Systems with less VRAM may experience:
+
+- Freezing
+- Heavy stuttering
+- Missing textures
+- Driver resets
+- Emulator crashes
+- Out-of-memory errors
+
+Higher-resolution rendering can increase VRAM requirements further.
+
+---
+
+# Experimental Features
+
+This branch may contain experimental features or optimizations that are not available in the official shadPS4 build.
+
+Experimental features can:
+
+- Improve FPS
+- Reduce stalls
+- Improve frame pacing
+- Reduce memory pressure
+- Fix specific Uncharted scenes
+
+But they can also introduce:
+
+- New crashes
+- Visual corruption
+- Missing graphics
+- Regression in other chapters
+- Increased memory usage
+
+Testing is therefore very important.
+
+---
+
+# Reporting Problems
+
+If you encounter a problem, please provide as much information as possible.
+
+Useful information includes:
+
+- Game
+- Chapter
+- Exact location
+- GPU
+- CPU
+- RAM
+- VRAM
+- Resolution
+- shadPS4 build/version
+- Settings
+- Screenshot or video
+- Log file
+- Crash diagnostics
+
+If the emulator crashes, please enable **Crash Diagnostics** before reproducing the problem whenever possible.
+
+Reports without logs or enough information can be difficult to investigate.
+
+Discord:
+
+https://discord.gg/wJYmkje8Q
+
+---
+
+# Development Status
+
+This project is experimental.
+
+I am currently not continuously working on this branch.
+
+Development may resume when the main shadPS4 project makes further progress with the major CPU, GPU, RAM, VRAM and renderer problems affecting the Uncharted games.
+
+There is no fixed schedule for future updates.
+
+The source code is public, so anyone is welcome to:
+
+- Test it
+- Modify it
+- Experiment with it
+- Improve it
+- Remove or add features
+- Use AI/LLM coding tools to experiment with the code
+- Report useful fixes or regressions
+
+If you find a real improvement or important problem, feel free to share it.
+
+---
+
+# General Information
+
+**shadPS4** is an early PlayStation 4 emulator for:
+
+- Windows
+- Linux
+- macOS
+
+It is written primarily in C++ and uses Vulkan for graphics rendering.
+
+This repository is a custom experimental fork/build and is **not the official shadPS4 repository**.
+
+---
 
 # Building
 
-## Docker
+Users who only want to test the provided build do not need to compile the emulator themselves.
 
-For building shadPS4 in a containerized environment using Docker and VSCode, check the instructions here:  
-[**Docker Build Instructions**](https://github.com/shadps4-emu/shadPS4/blob/main/documents/building-docker.md)
+Developers who want to modify the project can build it using the standard shadPS4 development environment.
 
-> [!IMPORTANT]
-> If you want to use shadPS4 to play your games, you don't have to follow the build instructions, you can simply download the emulator from either the [**release tab**](https://github.com/shadps4-emu/shadPS4/releases) or the [**action tab**](https://github.com/shadps4-emu/shadPS4/actions).
+The source code remains available so developers and testers can experiment with the Uncharted-specific changes.
 
-## Windows
+---
 
-Check the build instructions for [**Windows**](https://github.com/shadps4-emu/shadPS4/blob/main/documents/building-windows.md).
-
-## Linux
-
-Check the build instructions for [**Linux**](https://github.com/shadps4-emu/shadPS4/blob/main/documents/building-linux.md).
-
-## macOS
-
-Check the build instructions for [**macOS**](https://github.com/shadps4-emu/shadPS4/blob/main/documents/building-macos.md).
-
-> [!IMPORTANT]
-> macOS users need at least macOS 15.4 to run shadPS4. Due to GPU issues there are currently heavy bugs on Intel Macs.
-
-# Debugging and reporting issues
-
-For more information on how to test, debug and report issues with the emulator or games, read the [**Debugging documentation**](https://github.com/shadps4-emu/shadPS4/blob/main/documents/Debugging/Debugging.md).
-
-# Keyboard and Mouse Mappings
-
-> [!NOTE]
-> Some keyboards may also require you to hold the Fn key to use the F\* keys. Mac users should use the Command key instead of Control, and need to use Command+F11 for full screen to avoid conflicting with system key bindings.
+# Keyboard Shortcuts
 
 | Button | Function |
-|-------------|-------------|
-F10 | FPS Counter
-Ctrl+F10 | Video Debug Info
-F11 | Fullscreen
-F12 | Trigger RenderDoc Capture (or game-only screenshot if RenderDoc is unavailable)
-Alt+F12 | Capture screenshot including HUD/dialog overlays
+|---|---|
+| F10 | FPS Counter |
+| Ctrl + F10 | Video Debug Information |
+| F11 | Fullscreen |
+| F12 | RenderDoc Capture / Game Screenshot |
+| Alt + F12 | Screenshot including HUD/dialog overlays |
 
 > [!NOTE]
-> Xbox and DualShock controllers work out of the box.
+> Some keyboards may require holding the **Fn** key when using F-keys.
 
-| Controller button | Keyboard equivalent |
-|-------------|-------------|
-LEFT AXIS UP | W |
-LEFT AXIS DOWN | S |
-LEFT AXIS LEFT | A |
-LEFT AXIS RIGHT | D |
-RIGHT AXIS UP | I |
-RIGHT AXIS DOWN | K |
-RIGHT AXIS LEFT | J |
-RIGHT AXIS RIGHT | L |
-TRIANGLE | Numpad 8 or C |
-CIRCLE | Numpad 6 or B |
-CROSS | Numpad 2 or N |
-SQUARE | Numpad 4 or V |
-PAD UP | UP |
-PAD DOWN | DOWN |
-PAD LEFT | LEFT |
-PAD RIGHT | RIGHT |
-OPTIONS | RETURN |
-BACK BUTTON / TOUCH PAD | SPACE |
-L1 | Q |
-R1 | U |
-L2 | E |
-R2 | O |
-L3 | X |
-R3 | M |
+Xbox and DualShock/DualSense-compatible controllers can also be used.
 
-Keyboard and mouse inputs can be customized in the settings menu by clicking the Controller button, and further details and help on controls are  also found there. Custom bindings are saved per-game. Inputs support up to three keys per binding, mouse buttons, mouse movement mapped to joystick input, and more.
+---
 
+# Firmware Files
 
-# Firmware files
+Some games require PlayStation 4 system modules to function correctly.
 
-shadPS4 can load some PlayStation 4 firmware files.
-The following firmware modules are supported and must be placed in shadPS4's `sys_modules` folder.
+Required firmware files must be dumped from a **legally owned PlayStation 4 console** and placed inside the appropriate shadPS4 `sys_modules` directory.
 
-<div align="center">
+Firmware files are **not included with this repository**.
 
-| Modules                        | Modules                        | Modules                        | Modules                        |
-|--------------------------------|--------------------------------|--------------------------------|--------------------------------|
-| libSceAudiodec.sprx            | libSceAudiodecCpu.sprx         | libSceAudiodecCpuDdp.sprx      | libSceAudiodecCpuDtsHdLbr.sprx |
-| libSceAudiodecCpuHevag.sprx    | libSceAudiodecCpuM4aac.sprx    | libSceCesCs.sprx               | libSceFont.sprx                |
-| libSceFontFt.sprx              | libSceFreeTypeOl.sprx          | libSceFreeTypeOptOl.sprx       | libSceFreeTypeOt.sprx          |
-| libSceJpegDec.sprx             | libSceJpegEnc.sprx             | libSceJson.sprx                | libSceJson2.sprx               |
-| libSceLibcInternal.sprx        | libSceNgs2.sprx                | libScePngEnc.sprx              | libSceRtc.sprx                 |
-| libSceRudp.sprx                | libSceSystemGesture.sprx       | libSceUlt.sprx                 | libSceWkFontConfig.sprx        |
-| libSceXml.sprx                 |
-</div>
+---
 
-> [!Caution]
-> The above modules are required to run the games properly and must be dumped from your legally owned PlayStation 4 console.
+# Legal
+
+This repository does not contain:
+
+- PlayStation 4 firmware
+- Copyrighted Sony system files
+- Game files
+- Uncharted game data
+
+You must provide legally obtained game and firmware files yourself.
+
+---
+
+# Credits
+
+### shadPS4
+
+This project is based on the work of the **shadPS4 Emulator Project** and its contributors.
+
+### Mindro Fork
+
+Additional experimental modifications, Uncharted testing, optimizations and fixes are maintained/tested as part of the Mindro custom branch.
+
+### Community
+
+Thanks to everyone testing the Uncharted games, submitting logs, reporting crashes and helping identify graphical or performance regressions.
+
+---
+
+# Links
+
+**Mindro Discord**
+
+https://discord.gg/wJYmkje8Q
+
+**Mindro YouTube**
+
+https://www.youtube.com/@MindroXD
+
+---
+
 # License
 
-- [**GPL-2.0 license**](https://github.com/shadps4-emu/shadPS4/blob/main/LICENSE)
+GPL-2.0-or-later
+
+See the repository `LICENSE` file for complete licensing information.
